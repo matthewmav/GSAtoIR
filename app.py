@@ -69,11 +69,11 @@ from email_api import *
 
 
 
-USERNAME = "john"
-PASSWORD = "Password1"
+USERNAME = "johndoe"
+PASSWORD = "xxxxxx"
 
-EMAIL_USERNAME = "sywebs.keywordtool"
-EMAIL_PASSWORD = "5x5SsKW2tDGWQLv"
+EMAIL_USERNAME = "username"
+EMAIL_PASSWORD = "9999999999999"
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -97,10 +97,7 @@ def send_csv():
 
 	api = EmailSender(EMAIL_USERNAME, EMAIL_PASSWORD)
 
-	# api.send_email("info@sywebs.nl")
-	api.send_email("george.solymosi@gmail.com", "Links List", data.replace("\n", "<br>"))
-	# api.send_email("info@sywebs.nl", "Links List", data.replace("\n", "<br>"))
-
+	api.send_email("anymail@anymail.com", "Links List", data.replace("\n", "<br>"))
 
 @app.route("/api_mark_task_done", methods = ["POST"])
 def api_task_done():

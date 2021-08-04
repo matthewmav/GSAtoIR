@@ -3,8 +3,8 @@ from time import sleep
 from selenium.webdriver.common.keys import Keys
 
 
-USERNAME = "sywebs@gmail.com"
-PASSWORD = "d0a3b5ad"
+USERNAME = "anymail@anymail.com"
+PASSWORD = "pass"
 
 
 def refresh():

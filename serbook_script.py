@@ -4,9 +4,9 @@ from email_sender import *
 import press_refresh as sel
 import logging 
 
-USERNAME = "sywebs.keywordtool@gmail.com"
-PASSWORD = "5x5SsKW2tDGWQLv"
-TO = ["info@sywebs.nl","meirtolpin11@gmail.com"]
+USERNAME = "mail"
+PASSWORD = "pass"
+TO = ["mail"]
 
 
 def send_keywords_to_serpbook(url, keywords, thread_id, emails, region):

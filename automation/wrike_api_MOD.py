@@ -5,7 +5,7 @@ from time import sleep
 
 class WrikeAPI(object):
 
-	_token = r"eyJ0dCI6InAiLCJhbGciOiJIUzI1NiIsInR2IjoiMSJ9.eyJkIjoie1wiYVwiOjI0MzMzNTEsXCJpXCI6NjI5MDU4MyxcImNcIjo0NjExNzU1LFwidVwiOjUwNzg0NjEsXCJyXCI6XCJVU1wiLFwic1wiOltcIldcIixcIkZcIixcIklcIixcIlVcIixcIktcIixcIkNcIixcIkFcIixcIkxcIl0sXCJ6XCI6W10sXCJ0XCI6MH0iLCJpYXQiOjE1NjA1MjY2MDZ9.FAGyvgtUcYhk_9pfLRpAwqgaWqnWZ5RS83d694a6QBQ"
+	_token = r"token"
 
 	_folders_url = r"https://www.wrike.com/api/v4/folders"
 	_tasks_url = r"https://www.wrike.com/api/v4/tasks"
