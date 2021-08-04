@@ -9,8 +9,8 @@ from datetime import datetime, timedelta
 from jinja2 import Template
 
 TASKS_FOLDER = ""
-USERNAME = "sywebs.keywordtool"
-PASSWORD = "5x5SsKW2tDGWQLv"
+USERNAME = "username"
+PASSWORD = "password"
 
 href_logger = logging.getLogger("web_logger")
 
@@ -292,12 +292,12 @@ def work_accepted_notification(task_id, username, priority = False):
 
 	print "sending to users"
 	for user in users:
-		if user[1] == username or user[1] == "sywebs@gmail.com":
+		if user[1] == username or user[1] == "anymail@anymail.com":
 			continue
 
 		api.send_email(user[1], "Schrijfopdracht is niet meer beschikbaar", et.generate_work_recieved_email(parsed_tasks, user[1]))
 
-	api.send_email("sywebs@gmail.com", "Schrijfopdracht is niet meer beschikbaar (LinkBuilding) - " + username, et.generate_work_recieved_email(parsed_tasks, "sywebs@gmail.com"))
+	api.send_email("anymail@anymail.com", "Schrijfopdracht is niet meer beschikbaar (LinkBuilding) - " + username, et.generate_work_recieved_email(parsed_tasks, "anymail@anymail.com"))
 
 def accept_work(task_id, username, priority):
 	"""
@@ -357,7 +357,7 @@ def accept_work(task_id, username, priority):
 	email_content = et.generate_accepted_email(batch, tasks_to_accept, username, domain)
 	
 	email_api.send_email(username, "Je mag beginnen met schrijven!", email_content)
-	email_api.send_email("sywebs@gmail.com", "Je mag beginnen met schrijven! by - " + username , email_content)
+	email_api.send_email("anymail@anymail.com", "Je mag beginnen met schrijven! by - " + username , email_content)
 
 	work_accepted_notification(task_id, username, priority)
 

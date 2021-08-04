@@ -3,9 +3,9 @@ from wrike_functions import *
 
 api = WrikeAPI()
 
-overview = r"IEACKIKHKQMJLFKZ"
-short_overview = r"IEACKIKHKQMJLFNK"
-href_log = r"IEACKIKHKQMJN7KD"
+overview = r"xxxxxxxxxxxxx"
+short_overview = r"xxxxxxxxxxxxx"
+href_log = r"xxxxxxxxxxxxx"
 
 f = open("reports/summary.txt", "r")
 data = f.read()

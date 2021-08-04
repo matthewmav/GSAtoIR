@@ -22,7 +22,7 @@ def generate_work_recieved_email(tasks, username):
 
 	body = Template(body)
 
-	if username == "sywebs@gmail.com":
+	if username == "anymail@anymail.com":
 		body = body.render(writer_name = "Noel", links = links, domain_name = domain, username = username)
 	else:
 		body = body.render(writer_name = user[0][0], links = links, domain_name = domain, username = username)

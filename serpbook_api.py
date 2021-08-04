@@ -6,7 +6,7 @@ import logging
 class SerpBookAPI(object):
 	"""docstring for SerpBookAPI"""
 
-	api_key = r"c7859ed8aeaaefb0fdee47493bf052fa"
+	api_key = r"key"
 
 	serp_book_link = r"https://serpbook.com/serp/api/?action={action}&auth={api_key}"
 
