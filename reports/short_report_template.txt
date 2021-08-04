@@ -1,0 +1,25 @@
+pending/active/done/total
+
+Total - 
+{% for month in months %}
+	{{ month }} - 
+		{{ total_pending[month] }}/{{ total_active[month] }}/{{ total_done[month] }}/{{ total_pending[month] + total_active[month] + total_done[month]  }}
+{% endfor %}
+
+Per Project - 
+{% for month in months %}
+	{{ month }}  - 
+		{% for project in active_tasks[month].keys() %}
+			{{ project }} - 
+				{{ pending_tasks[month][project] }}/{{ active_tasks[month][project] }}/{{ done_tasks[month][project] }}/{{ pending_tasks[month][project] + active_tasks[month][project] + done_tasks[month][project]}}
+		{% endfor %}
+{% endfor %}
+
+Users Statistic - 
+	Accepted/Rejected/Active/Expired/Done -
+	{% for month in users.keys() %}
+		{{ month }} -
+		{% for writer in users[month].keys() %}
+				{{ writer }}: {{ users[month][writer]["accepted"] }} / {{ users[month][writer]["rejected"] }} / {{ users[month][writer]["active"] }} / {{ users[month][writer]["expired"]}} / {{ users[month][writer]["done"] }}
+		{% endfor %}
+	{% endfor %}

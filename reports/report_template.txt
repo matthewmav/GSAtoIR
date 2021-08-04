@@ -1,0 +1,71 @@
+
+Active Tasks:
+{% for month in months %}
+	{{ month }} - 
+	{% for domain in active_tasks[month].keys() %}
+		Project -
+			{{ domain }}
+			{% if active_tasks[month][domain]|length == 0 %}
+				- No Topics
+			{% else %}
+			{% for task in active_tasks[month][domain] %}
+				- {{ task[0] }}, by - {{ task[2] }}, at {{ task[3] }}
+			{% endfor %} 
+			{% endif %}
+	{% endfor %}
+{% endfor %}
+
+Pending Tasks:
+{% for month in months %}
+	{{ month }} - 
+	{% for domain in pending_tasks[month].keys() %}
+		Project -
+			{{ domain }}
+			{% if pending_tasks[month][domain]|length == 0 %}
+				- No Topics
+			{% else %}
+			{% for task in pending_tasks[month][domain] %}
+				- {{ task[1] }}. sent to - (at {{ task[4] }})
+				{% if task[3] %}
+				{% set list1 = task[3].split(';') %}
+				{% for email in list1 %}
+					- {{ email }}
+				{% endfor %}
+				{% endif %}
+			{% endfor %} 
+			{% endif %}
+	{% endfor %}
+{% endfor %}
+
+Done Tasks:
+{% for month in months %}
+	{{ month }} - 
+	{% for domain in done_tasks[month].keys() %}
+		Project -
+			{{ domain }}
+			{% if done_tasks[month][domain]|length == 0 %}
+				- No Topics
+			{% else %}
+			{% for task in done_tasks[month][domain] %}
+				- {{ task[1] }}, by - {{ task[3] }}, at {{ task[4] }}, 
+					live - {{ task[6] }}, not live - {{ task[7] }}
+			{% endfor %} 
+			{% endif %}
+	{% endfor %}
+{% endfor %}
+
+Expired Tasks:
+{% for month in months %}
+	{{ month }} - 
+	{% for domain in expired_tasks[month].keys() %}
+		Project -
+			{{ domain }}
+			{% if expired_tasks[month][domain]|length == 0 %}
+				- No Tasks
+			{% else %}
+			{% for task in expired_tasks[month][domain] %}
+				- {{ task[3] }}, by - {{ task[1] }}, at {{ task[2] }}
+			{% endfor %} 
+			{% endif %}
+	{% endfor %}
+{% endfor %}

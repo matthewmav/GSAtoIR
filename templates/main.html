@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+
+	<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<title> Add user </title>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3" style="margin: auto; margin-top: 10vh;">
+
+				<!-- / .main-navbar -->
+				<div class="main-content-container container-fluid px-4">
+					<div class="row">
+						<div class="col">
+							<div class="card card-small mb-4">
+								<div class="card-body p-0 pb-3 text-center">
+									<table class="table table-bordered">
+										<thead>
+											<th> Full name </th>
+											<th> Email </th>
+											<th> Is priority ? </th>
+											<th> Delete </th>
+										</thead>
+										<tbody>
+											{% for user in users %}
+											<tr>
+												<td> {{ user[0] }} </td>
+												<td> {{ user[1] }}</td>
+												<td> {{ user[2] }} </td>
+												<td> <a href="/delete_user?username={{ user[1] }}" class="btn btn-danger" > Delete </a></td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+									<div style="text-align: right;">
+										<a href="/add_user" class="btn btn-success" style="margin: 10px"> Add User </a>
+									</div>
+
+									<p> Special Project - Client: - </p>
+									<table class="table table-bordered">
+										<thead>
+											<th> Project </th>
+											<th> Email </th>
+											<th> Delete </th>
+										</thead>
+										<tbody>
+											{% for premium_writer in premium_writers %}
+											<tr>
+												<td> {{ premium_writer[1] }} </td>
+												<td> {{ premium_writer[0] }}</td>
+												<td> <a href="/delete_premium_user?project={{ premium_writer[1] }}" class="btn btn-danger" > Delete </a></td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+									
+									<div style="text-align: right;">
+										<a href="/add_client" class="btn btn-success" style="margin: 10px"> Add Client </a>
+									</div>
+
+									<br>
+									<br>
+									<br>
+									<br>
+									<div>
+									<h3> Options Part </h3>
+									<table align="center" style="width: 60%">
+    									<tbody>
+    										<tr>
+    											<td>
+													<form action="/update_months"  method = "POST">
+														<table>
+															<tbody>
+																<td> <input type="text" class = "form-control" name="months" value="{{ months }}"></td>
+																<td> <input type="text" class = "form-control" name="year" value="{{ year }}"></td>
+																<td> <button class = "btn btn-success"  type="submit"> Update Months </button></td>
+															</tbody>
+														</table>	
+													</form>
+												</td>
+    										</tr>
+    										<tr>
+    											<td>
+	    											<table style="width: 100%">
+	    												<tr>
+	    													<td >
+																<form action="/force_send">
+																	<button style="width: 100%" class ="btn btn-warning"> Force Send </button>
+																</form>
+															</td>
+															<td style="width: 50%">
+																<a style="width: 100%" href="/project_selector" class="btn btn-info" > Project Selector  </a>
+															</td>
+	    												</tr>
+	    											</table>
+    											</td>
+    										</tr>
+    										<tr>
+    											<td>
+    												<a style="width: 100%" href="/manual_add_link" class="btn btn-info" > Manual Add Link </a>
+    											</td>
+											</tr>
+											<tr>
+    											<td>
+    												<a style="width: 100%" href="/get_csv_links" class="btn btn-info" > Get Links </a>
+    											</td>
+											</tr>
+											<tr>
+    											<td>
+    												<a style="width: 100%;background-color: purple;" href="/api_mark_task_done" class="btn btn-info" > Run indexer automation </a>
+    											</td>
+											</tr>    											
+
+    									</tbody>
+  									</table>
+
+									<br>
+									<br>
+									<br>
+									
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

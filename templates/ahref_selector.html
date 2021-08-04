@@ -1,0 +1,141 @@
+<html class="no-js h-100" lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Article Submit Form</title>
+
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+
+	<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.col-md-9/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+	<style>
+	input {
+	  font-size: 0.5em !important;
+	}
+	select {
+	  font-size: 0.5em !important;
+	}
+	</style>
+
+
+</head>
+
+<body class="h-100">
+
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3" style="margin: 0">
+
+				<!-- / .main-navbar -->
+				<div class="main-content-container container-fluid px-4">
+					<div class="row">
+						<div class="col">
+							<div class="card card-small mb-4">
+								<div class="card-body p-0 pb-3 text-center">
+									<form style="padding: auto;margin: 30;text-align: left;" method = "POST" enctype = "multipart/form-data">
+										
+										{% if tasks|length == 0 %}
+											<p> Sorry, there are no tasks in the DB, please try again in a minute </p>
+										{% else %}
+										<table>
+											{% for task in tasks %}
+											<tr>
+												<td id="">
+													<input type="hidden" class="form-control" name="input_link_id_{{ loop.index - 1 }}" value="{{ task[0] }}" readonly="readonly">
+												</td>
+
+												<td id="link_value">
+													{% if 'ahref:' in task[4] %}
+														<input type="text" class="form-control" name="input_link_value_{{ loop.index - 1 }}" value="{{ task[4] }}" readonly="readonly" style="background: yellow"> 
+													{% else %}
+														<input type="text" class="form-control" name="input_link_value_{{ loop.index - 1 }}" value="{{ task[4] }}" readonly="readonly"> 
+													{% endif %}
+												</td>
+
+												<td>
+													<select class="form-control" id="dropdown_{{ loop.index - 1 }}" name="dropdown_{{ loop.index - 1 }}" onchange="on_dropdown_change(this)">
+														<option value = "">
+															
+														</option>
+														{% for link in ahref_links.keys() %}
+														<option value = "{{ ahref_links[link][1] }}">
+															{{ link }}
+														</option>
+														{% endfor %}
+													</select>
+												</td>
+												
+												<td>
+													<select class="form-control" id="dropdown_keywords_{{ loop.index - 1 }}" name="dropdown_keywords_{{ loop.index - 1 }}">
+														<option>
+														</option>
+													</select>
+												</td>
+											</tr>
+											{% endfor %}
+										</table>
+										<div style="text-align: right;padding-top: 10px">
+											<input type="submit" name="submit" class="btn btn-primary" value="Generate">	
+										</div>
+										{% endif %}
+										
+
+									</form> 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+	<script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+	<script type="text/javascript">
+		
+		function on_dropdown_change(element){
+			ahref_links_dict = {{ ahref_links_string|safe }};
+			
+			id = element.id;
+			index = id.split("_")[1];
+			link = element.options[element.selectedIndex].text;
+
+			keywords_dropdown = "dropdown_keywords_" + index;
+			new_inner_html = "";
+
+			for (index = 0; index < ahref_links_dict[link][0].length; ++index) {
+				keyword = ahref_links_dict[link][0][index];
+				ranking = ahref_links_dict[link][2];
+				
+				if (ranking.length == 0){
+					new_inner_html += "<option value='" + keyword + "'>" + keyword + "</option>";
+				}
+				else {
+					ranking = ahref_links_dict[link][2][index];
+					new_inner_html += "<option value='" + keyword + "'>" + keyword + " : " + ranking + "</option>";	
+				}
+			    
+			}
+
+			keywords_dropdown = document.getElementById(keywords_dropdown);
+			keywords_dropdown.innerHTML = new_inner_html;
+
+		}
+
+	</script>
+</body></html>

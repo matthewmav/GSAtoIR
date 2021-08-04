@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Error</title>
+</head>
+<body>
+	<h1> Error </h1>
+	<ul>
+		{% for line in lines[:-1] %}
+			<li> {{ line }} </li>
+		{% endfor %}
+		<br>
+		<br>
+		<li> <font color="red"> {{ lines[-1] }} </font></li>
+	</ul>
+</body>
+</html>

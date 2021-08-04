@@ -1,0 +1,55 @@
+
+WORK DONE/WORK IS EMAILED TO CLIENT/ACCEPTED BY CLIENT/DENIED BY CLIENT
+
+{% for month in statistics.keys() %}
+	{% if month != '' %}
+	{{ month }} - 
+		{% for project in statistics[month] %}
+			{% if project[0] != '' %}
+				{{ project[0] }} - {{ project[2] }}/{{ project[3] }}/{{ project[4] }}/{{ project[5] }}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+
+NEEDS TO BE REDONE/WORK IS EMAILED/WORK IS ACCEPTED/ WORK IS SUBMITTED
+
+{% for month in statistics.keys() %}
+	{% if month != '' %}
+	{{ month }} - 
+	{% for project in statistics[month] %}
+		{% if project[0] != '' %}
+			{{ project[0] }} - {{ project[6] }}/{{ project[7] }}/{{ project[8] }}/{{ project[9] }}
+		{% endif %}
+	{% endfor %}
+	{% endif %}
+{% endfor %}
+
+
+Rewrites Info - 
+		
+NEED TO BE REDONE/SENT TO CLIENT/ACCEPTED/REJECTED 
+
+{% for month in second_log.keys() %}
+	{% if month != '' %}
+	{{ month }} - 
+	{% for project in second_log[month] %}
+		{% for article in second_log[month][project] %}
+		{{ article[0] }} - {{ article[1] }} - {{ article[2] }}/{{ article[3] }}/{{ article[4] }}/{{ article[5] }}
+		
+		{% endfor %}
+	{% endfor %}
+	{% endif %}
+{% endfor %}
+
+
+Writers Statistics - 
+
+ACCEPTED/REJECTED/SUBMITTED 
+
+{% for month in writers.keys() %}
+	- {{ month }}
+	{% for writer in writers[month].keys() %}
+		- {{ writer }} - {{ writers[month][writer][0] }}/{{ writers[month][writer][1] }}/{{ writers[month][writer][2] }}
+	{% endfor %}
+{% endfor %}

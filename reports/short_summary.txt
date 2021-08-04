@@ -1,0 +1,40 @@
+pending/active/done/total
+
+Total - 
+
+	october - 
+		2/1/11/14
+
+
+Per Project - 
+
+	october  - 
+		
+			netwerkongediertebestrijding.nl - 
+				0/0/4/4
+		
+			videobeesten.nl - 
+				0/1/2/3
+		
+			serverion.com - 
+				0/0/3/3
+		
+			www.strijkeraquarium.nl - 
+				2/0/2/4
+		
+
+
+Users Statistic - 
+	Accepted/Rejected/Active/Expired/Done -
+	
+		october -
+		
+				aliciaatje97@gmail.com: 9 / 0 / 1 / 0 / 7
+		
+				meirtolpin11@gmail.com: 0 / 0 / 0 / 1 / 0
+		
+				carmenfenicolay@gmail.com: 1 / 0 / 0 / 0 / 1
+		
+				hariantos1991@gmail.com: 3 / 0 / 0 / 0 / 3
+		
+	

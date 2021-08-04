@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+
+	<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<title> Add user </title>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3" style="margin: auto; margin-top: 10vh;">
+
+				<!-- / .main-navbar -->
+				<div class="main-content-container container-fluid px-4">
+					<div class="row">
+						<div class="col">
+							<div class="card card-small mb-4">
+								<div class="card-body p-0 pb-3 text-center">
+									<form style="padding: auto; margin: 30;text-align: left;" method = "POST" enctype = "multipart/form-data" >
+										<div style="margin: 10px">
+											<label class="form-check-label" for="project"> Project </label>
+											<input class = "form-control" type="text" name="project" id = "project" />
+										</div>	
+
+										<div style="margin: 10px">
+											<label class="form-check-label" for="username"> Email </label>
+											<input class = "form-control" type="text" name="username" id="username" />
+										</div>	
+
+										<div style="margin: 10px">
+											<label class="form-check-label" for="instructions"> Instructions </label>
+											<textarea class = "form-control" name="instructions" cols="40" rows="5"></textarea>
+										</div>	
+
+
+										<div style="text-align: right">
+												<button action="submit" style="margin: 10px" class="btn btn-primary"> Submit </button>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

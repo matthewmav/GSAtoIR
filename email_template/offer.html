@@ -1,0 +1,33 @@
+Beste {{ writer_name }}, <br>
+<br>
+Heb jij tijd om binnen 2 dagen aan de volgende codes te werken (uur per code)<br>
+<br>
+{% for link in links %}
+	- &lt;a href="{{ link[0] }}"&gt; <strong> {{ link[1] }} </strong>  &lt;/a&gt; <br>
+{% endfor %}
+<br>
+De links moeten relevant zijn en zo discreet mogelijk. Je mag absoluut geen reclame teksten maken zoals koop hier of bestel hier of zij zijn de beste of<br>
+<br>
+De bedoeling is dat je dieper de stof in gaat van de website en vervolgens vragen stelt of opmerkingen maakt op basis van de post waarbij je zo discreet mogelijk de ahref code probeert te plaatsen.<br>
+<br>
+Domein waar je voor gaat werken is {{ domain_name }}<br>
+<br>
+<table>
+	<tbody>
+		<tr>
+			<td> 
+				<div>
+					<a href="http://193.33.61.163:7000/accept?task_id={{ id }}&username={{ username }}&priority={{ priority }}"
+					style="background-color:#1aa305;border:1px solid #1e3650;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;mso-hide:all;">Accepteren</a></div>
+				</div>
+			</td>
+			<td>
+				<div>
+					<a href="http://193.33.61.163:7000/reject?task_id={{ id }}&username={{ username }}"
+					style="background-color:#dd0e10;border:1px solid #1e3650;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;mso-hide:all;">Afwijzen</a>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
