@@ -9,6 +9,7 @@ if sys.executable.endswith("pythonw.exe"):
   sys.stderr = open("nohup", "w")
 
 import logging
+import json
 
 
 
@@ -69,8 +70,8 @@ from email_api import *
 
 
 
-USERNAME = "johndoe"
-PASSWORD = "xxxxxx"
+USERNAME = "test"
+PASSWORD = "test"
 
 EMAIL_USERNAME = "username"
 EMAIL_PASSWORD = "9999999999999"
@@ -466,25 +467,32 @@ def main():
 	month = datetime.now().strftime("%B").lower()
 	year = datetime.now().year
 
+	# FOR THE CHECKING DEV: 
+	# This code is terrible, a lot of unused code, and no proper database/configuration
+	# in a perfect world I would better use the project's database to store the status.
+	# file writing solution is not prefect, but for this specific problem I think it's fine.
+
+	# check if config file exists
+	if os.path.isfile("automation\\indexer_status.json"):
+
+		# load the configuration
+		status_file = open("automation\\indexer_status.json", 'r')
+		indexer_config = json.load(status_file)
+		status_file.close()
+	else:
+		status_file = open("automation\\indexer_status.json", "w")
+		indexer_config = {"status": "StandBy", "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+		json.dump(indexer_config, status_file)	
+		status_file.close()
+
+
 	return render_template(
 		"gsa_indexer.html", 
 		month = month, 
 		year = year, 
-		started=started)
+		status = indexer_config["status"])
 
 	
-# @app.route("/", methods = ["GET"])
-# @auth.login_required
-# def main():
-# 	users = ahref_db.get_all_users()
-
-# 	months = ahref_db.get_months()
-# 	year = ahref_db.get_year()
-
-# 	#projects = db.get_all_domains()
-
-# 	return render_template("main.html", users = users, months = months, year = year)
-
 def update_ahref_in_wrike(links_dict):
 	for task_id in links_dict.keys():
 		# updating task titles in wrike 
