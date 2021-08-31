@@ -14,12 +14,6 @@ from threading import Thread
 
 def run_indexer(link, task_id):
 	
-	# while True:
-	# 	if not ahref_db.check_mutex():
-	# 		ahref_db.mark_mutex()
-	# 		break
-	# 	sleep(randint(0, 10))
-
 	try:
 		api = WrikeAPI()
 

@@ -1,5 +1,6 @@
 import os
 import sys
+import datetime
 
 sys.path.append("c:\\Users\\georg\\SywebsProjects\\hrefgen")
 
@@ -10,6 +11,7 @@ from wrike_use_script_MOD import *
 from time import sleep
 from random import randint
 from threading import Thread
+import json
 
 
 def run_indexer(link, task_id):
@@ -63,12 +65,29 @@ def index_all_tasks(month):
 	"""
 	api = WrikeAPI()
 	links_to_index = get_links_to_index(months_to_get=month)
+	# current datetime
+	now = datetime.datetime.now()
+
 
 	print "### Total number of links: {}".format(len(links_to_index))
+
+	# processing
+
+	status_file = open("automation\\indexer_status.json", "w")
+	json.dump({"status": "Processing", "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}, status_file)	
+	status_file.close()
+
+
 	for i, (task_id, link) in enumerate(links_to_index.items()):
+		# Processing
 		run_indexer(link, task_id)
 		print "### Number of links remained: {}".format(len(links_to_index) - (i + 1))
 
+	# standby
+
+	status_file = open("automation\\indexer_status.json", "w")
+	json.dump({"status": "StandBy", "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}, status_file)
+	status_file.close()
 
 
 if __name__ == "__main__":
